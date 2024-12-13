@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Education</string>
+    <string name="yourProgress">İlerlemeniz</string>
+    <string name="taskCompleted">Tamamlanan Görevler</string>
+    <string name="timeSpent">Harcanan Zaman</string>
+    <string name="avgScore">Ortalama Skor</string>
+    <string name="btnStart">Başla</string>
+    <string name="level">Aşama</string>
+    <string name="start">Başla</string>
+    <string name="levelContent1">Konuya giriş yapın.</string>
+    <string name="levelContent2">Konu hakkında örnekler görün.</string>
+    <string name="levelContent3">Alıştırmalar yaparak pekiştirin.</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Education</string>
+    <string name="yourProgress">Your Progress</string>
+    <string name="taskCompleted">Task Completed</string>
+    <string name="timeSpent">Time Spent</string>
+    <string name="avgScore">Average Score</string>
+    <string name="btnStart">Start</string>
+    <string name="level">Level</string>
+    <string name="start">Start</string>
+    <string name="levelContent1">Start with the basics</string>
+    <string name="levelContent2">See examples of the subject</string>
+    <string name="levelContent3">Do exercises to improve</string>
+</resources>
