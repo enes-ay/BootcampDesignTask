@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -112,13 +113,21 @@ fun HomePage(innerPadding: PaddingValues) {
                     modifier = Modifier.padding(20.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    Text(
-                        text = stringResource(R.string.yourProgress),
-                        fontSize = (screenWidth / 13).sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextColor,
-                        fontFamily = roboto
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.yourProgress),
+                            fontSize = (screenWidth / 13).sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextColor,
+                            fontFamily = roboto
+                        )
+                        Image(modifier = Modifier.size(50.dp), painter = painterResource(R.drawable.growth),
+                                contentDescription = "image")
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -227,14 +236,14 @@ fun TrainingItem(step: String, description: String, backgroundColor: Color, isDa
                 ) {
                     Text(
                         text = step,
-                        fontSize = 18.sp,
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.ExtraBold,
                         color = TextColor,
                         fontFamily = roboto
                     )
                     Text(
                         text = description,
-                        fontSize = 14.sp,
+                        fontSize = 17.sp,
                         color = TextColor,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Start,
