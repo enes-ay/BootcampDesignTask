@@ -10,4 +10,8 @@
     <string name="levelContent1">Start with the basics</string>
     <string name="levelContent2">See examples of the subject</string>
     <string name="levelContent3">Do exercises to improve</string>
+    <string name="profileScreen">Profile</string>
+    <string name="homeScreen">Home</string>
+    <string name="favScreen">Favorites</string>
+    <string name="recommadationList">Recommended</string>
 </resources>

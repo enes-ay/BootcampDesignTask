@@ -10,4 +10,8 @@
     <string name="levelContent1">Konuya giriş yapın.</string>
     <string name="levelContent2">Konu hakkında örnekler görün.</string>
     <string name="levelContent3">Alıştırmalar yaparak pekiştirin.</string>
+    <string name="profileScreen">Profil</string>
+    <string name="homeScreen">Ana Sayfa</string>
+    <string name="favScreen">Favoriler</string>
+    <string name="recommadationList">Tavsiyeler</string>
 </resources>

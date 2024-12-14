@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,11 +21,21 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,6 +46,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.enesay.bootcampdesigntask.ui.theme.BlackColor
 import com.enesay.bootcampdesigntask.ui.theme.BootcampDesignTaskTheme
+import com.enesay.bootcampdesigntask.ui.theme.GrayBorder
 import com.enesay.bootcampdesigntask.ui.theme.LightBlue
 import com.enesay.bootcampdesigntask.ui.theme.LightCoral
 import com.enesay.bootcampdesigntask.ui.theme.LightGreen
@@ -77,7 +90,7 @@ class MainActivity : ComponentActivity() {
                                 titleContentColor = Color.White
                             )
                         )
-                    }, modifier = Modifier.fillMaxSize()
+                    }, bottomBar = { BottomBar() }, modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     HomePage(innerPadding)
                 }
@@ -95,116 +108,113 @@ fun HomePage(innerPadding: PaddingValues) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .wrapContentSize()
             .padding(innerPadding),
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp)) {
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.elevatedCardColors(
-                    contentColor = TextColor,
-                    containerColor = MainColor
-                )
-            ) {
-                Column(
-                    modifier = Modifier.padding(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(R.string.yourProgress),
-                            fontSize = (screenWidth / 13).sp,
-                            fontWeight = FontWeight.Bold,
-                            color = TextColor,
-                            fontFamily = roboto
-                        )
-                        Image(modifier = Modifier.size(50.dp), painter = painterResource(R.drawable.growth),
-                                contentDescription = "image")
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Column {
-                            Text(
-                                text = stringResource(R.string.taskCompleted),
-                                color = TextColor,
-                                fontWeight = FontWeight.Bold,
-                                textAlign = TextAlign.Start,
-                                fontFamily = roboto
-                            )
-                            Text(
-                                text = "12/20",
-                                fontWeight = FontWeight.ExtraBold,
-                                color = TextColorSecondary,
-                                fontFamily = roboto
-                            )
-                        }
-                        Column {
-                            Text(
-                                text = stringResource(R.string.timeSpent),
-                                fontWeight = FontWeight.Bold,
-                                color = TextColor,
-                                textAlign = TextAlign.Start,
-                                fontFamily = roboto
-                            )
-                            Text(
-                                text = "10 hours",
-                                fontWeight = FontWeight.ExtraBold,
-                                color = TextColorSecondary,
-                                fontFamily = roboto
-                            )
-                        }
-                        Column {
-                            Text(
-                                text = stringResource(R.string.avgScore),
-                                fontWeight = FontWeight.Bold,
-                                color = TextColor,
-                                textAlign = TextAlign.Start,
-                                fontFamily = roboto
-                            )
-                            Text(
-                                text = "85%",
-                                fontWeight = FontWeight.ExtraBold,
-                                color = TextColorSecondary,
-                                fontFamily = roboto
-                            )
-                        }
-                    }
-                }
+        LazyRow (modifier = Modifier.fillMaxWidth()) {
+            items(2){
+                CardItem(screenWidth)
             }
+        }
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+                text = stringResource(R.string.recommadationList), textAlign = TextAlign.Start,
+                fontSize = 20.sp, fontWeight = FontWeight.Bold, fontFamily = roboto
+            )
+
             Column(
                 modifier = Modifier
                     .wrapContentSize()
-                    .padding(vertical = 10.dp),
+                    .padding(vertical = 5.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 TrainingItem(
                     step = stringResource(R.string.level) +
                             " 1",
                     description = stringResource(R.string.levelContent1),
-                    backgroundColor = LightBlue,
+                    backgroundColor = WhiteColor,
                     isDarkMode
                 )
                 TrainingItem(
                     step = stringResource(R.string.level) + " 2",
                     description = stringResource(R.string.levelContent2),
-                    backgroundColor = LightGreen,
+                    backgroundColor = WhiteColor,
                     isDarkMode
                 )
                 TrainingItem(
                     step = stringResource(R.string.level) + " 3",
                     description = stringResource(R.string.levelContent3),
-                    backgroundColor = LightCoral,
+                    backgroundColor = WhiteColor,
                     isDarkMode
+                )
+            }
+        }
+}
+
+@Composable
+fun CardItem(screenWidth: Int) {
+    Card(
+        modifier = Modifier.size(280.dp, 240.dp).padding(5.dp),
+        colors = CardDefaults.elevatedCardColors(
+            contentColor = TextColor,
+            containerColor = WhiteColor
+        ),
+        border = BorderStroke(2.dp, GrayBorder)
+    ) {
+        Column(
+            modifier = Modifier.padding(15.dp).fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+
+            Image(
+                modifier = Modifier.size(200.dp, 70.dp),
+                painter = painterResource(R.drawable.growth
+                ),
+                contentDescription = "image",
+                contentScale = ContentScale.Crop
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.yourProgress),
+                    fontSize = (screenWidth / 20).sp,
+                    fontWeight = FontWeight.Bold,
+                    color = BlackColor,
+                    fontFamily = roboto
+                )
+                IconButton(onClick = {}) {
+                    Icon(Icons.Default.Favorite, "")
+                }
+
+            }
+            Text(
+                text = stringResource(R.string.taskCompleted),
+                color = BlackColor,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Start,
+                fontFamily = roboto
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = stringResource(R.string.taskCompleted),
+                    color = BlackColor,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Start,
+                    fontFamily = roboto
+                )
+                Text(
+                    text = "asfasfasf",
+                    fontWeight = FontWeight.ExtraBold,
+                    color = TextColorSecondary,
+                    fontFamily = roboto
                 )
             }
         }
@@ -222,35 +232,48 @@ fun TrainingItem(step: String, description: String, backgroundColor: Color, isDa
         Surface(
             color = backgroundColor,
             shape = RoundedCornerShape(16.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            border = BorderStroke(2.dp, GrayBorder)
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
+                    .padding(horizontal = 10.dp, vertical = 2.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(5.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Image(painter = painterResource(R.drawable.app_icon_foreground), "place image")
+                }
+                Column(
+                    modifier = Modifier
+                        .weight(2f)
+                        .padding(5.dp),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         text = step,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.ExtraBold,
-                        color = TextColor,
+                        color = BlackColor,
                         fontFamily = roboto
                     )
+                    Spacer(Modifier.size(5.dp))
                     Text(
                         text = description,
                         fontSize = 17.sp,
-                        color = TextColor,
-                        fontWeight = FontWeight.Bold,
+                        color = BlackColor,
+                        fontWeight = FontWeight.Light,
                         textAlign = TextAlign.Start,
                         fontFamily = roboto
                     )
                 }
-                ElevatedButton(onClick = { /*TODO: Add action*/ }) {
+                ElevatedButton(modifier = Modifier.weight(1f), onClick = { /*TODO: Add action*/ }) {
                     Text(
                         text = stringResource(R.string.start),
                         color = if (isDarkMode) WhiteColor else BlackColor,
@@ -260,6 +283,54 @@ fun TrainingItem(step: String, description: String, backgroundColor: Color, isDa
                 }
             }
         }
+    }
+}
+
+@Composable
+fun BottomBar() {
+
+    val items = listOf(
+        Screens.Home,
+        Screens.Profile,
+        Screens.Favorites,
+    )
+    NavigationBar(
+        modifier = Modifier.border(
+            BorderStroke(1.dp, Color.Gray.copy(alpha = 0.2f)), // Şeffaf bir gri sınır
+            shape = CutCornerShape(
+                topStart = 0.dp,
+                topEnd = 0.dp,
+                bottomEnd = 0.dp,
+                bottomStart = 0.dp
+            ) // Sadece üst kenarda sınır
+        ),
+        containerColor = Color.White,
+        contentColor = Color.Black,
+
+        ) {
+
+        items.forEach { item ->
+            NavigationBarItem(
+                onClick = {},
+                selected = true,
+                icon = {
+                    Icon(item.icon, contentDescription = stringResource(id = item.labelResId))
+                },
+                label = {
+                    Text(
+                        text = stringResource(id = item.labelResId),
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 16.sp
+                    )
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MainColor,
+                    selectedTextColor = MainColor,
+                    indicatorColor = Color.Transparent
+                )
+            )
+        }
+
     }
 }
 
