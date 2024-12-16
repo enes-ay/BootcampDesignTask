@@ -55,6 +55,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.enesay.bootcampdesigntask.ui.NavTaskApp
 import com.enesay.bootcampdesigntask.ui.theme.BlackColor
 import com.enesay.bootcampdesigntask.ui.theme.BootcampDesignTaskTheme
 import com.enesay.bootcampdesigntask.ui.theme.GrayBorder
@@ -67,34 +68,13 @@ import com.enesay.bootcampdesigntask.ui.theme.TextColorSecondary
 import com.enesay.bootcampdesigntask.ui.theme.WhiteColor
 import com.enesay.bootcampdesigntask.ui.theme.roboto
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(){
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BootcampDesignTaskTheme {
-                Scaffold(
-                    topBar = {
-                        TopAppBar(
-                            title = {
-                                Text(
-                                    text = stringResource(R.string.app_name),
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    fontFamily = roboto
-                                )
-                            },
-                            colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = MainColor,
-                                titleContentColor = Color.White
-                            )
-                        )
-                    }, bottomBar = { BottomBar() }, modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-                    HomePage(innerPadding)
-                }
-            }
+            NavTaskApp()
         }
     }
 }
