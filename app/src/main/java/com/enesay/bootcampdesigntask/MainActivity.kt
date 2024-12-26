@@ -56,6 +56,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.enesay.bootcampdesigntask.ui.NavTaskApp
+import com.enesay.bootcampdesigntask.ui.components.CustomBottomNavigationBar
 import com.enesay.bootcampdesigntask.ui.theme.BlackColor
 import com.enesay.bootcampdesigntask.ui.theme.BootcampDesignTaskTheme
 import com.enesay.bootcampdesigntask.ui.theme.GrayBorder

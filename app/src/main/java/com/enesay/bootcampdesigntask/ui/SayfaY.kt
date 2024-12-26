@@ -1,5 +1,6 @@
 package com.enesay.bootcampdesigntask.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +16,7 @@ import androidx.navigation.NavController
 @Composable
 fun SayfaY(navController: NavController) {
     // Sayfa Y'den geri tuşuna basıldığında Ana Sayfaya direkt dönme
-    androidx.activity.compose.BackHandler {
+    BackHandler {
         navController.popBackStack("anasayfa", inclusive = false)
     }
 

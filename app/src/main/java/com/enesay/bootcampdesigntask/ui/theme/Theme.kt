@@ -9,9 +9,13 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.core.view.WindowCompat
 import com.enesay.bootcampdesigntask.R
 
 private val DarkColorScheme = darkColorScheme(
@@ -52,6 +56,12 @@ fun BootcampDesignTaskTheme(
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+    val view = LocalView.current
+    SideEffect { // coroutine
+        val window = (view.context as Activity).window
+        window.statusBarColor = MainColor.toArgb()
+        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+    }
 
     MaterialTheme(
         colorScheme = colorScheme,
@@ -59,5 +69,6 @@ fun BootcampDesignTaskTheme(
         content = content
     )
 }
+
 // Fonts
 val roboto = FontFamily(Font(R.font.roboto))
