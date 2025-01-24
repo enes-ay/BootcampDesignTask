@@ -6,6 +6,6 @@ Screenshot
 ===========
 
 <p align="center">
-  <img src="/Screenshots/ss_home.png" alt="Listing" width="200"/>
+  <img src="/Screenshots/ss_home.png" alt="Home Page" width="200"/>
 </p>
 
